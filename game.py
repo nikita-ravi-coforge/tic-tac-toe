@@ -1,7 +1,6 @@
 from board import Board
 
 class Game:
-"""Runs one game of Tic-Tac-Toe."""
 
     def __init__(self):
         self._board = Board()
