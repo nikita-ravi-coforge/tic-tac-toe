@@ -1,31 +1,33 @@
 # Tic-Tac-Toe
 
-A Tic-Tac-Toe game played in the terminal on a 3×3 grid. You can play
-against another person or against the computer. Players take turns placing
-X and O, and the first to get three in a row (horizontally, vertically, or
-diagonally) wins. If the board fills up with no winner, the game is a draw.
+A Tic-Tac-Toe game that runs in the terminal on a 3x3 board. You can play against a friend, or play as X against the computer on Easy (random moves) or Hard (uses minimax and never loses when it plays second).
 
-## How to Run
+## How to run the game
 
-Requires Python 3.8 or later. From the project root:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python main.py
+```
 
-    python main.py
+Pick a mode from the menu, then enter each move as a row and a column from 1 to 3, for example `2 3`.
 
-Pick a game mode from the menu, then enter a square number from 1 to 9
-when prompted:
+## How to run the tests
 
-     1 | 2 | 3
-    ---+---+---
-     4 | 5 | 6
-    ---+---+---
-     7 | 8 | 9
+With the virtual environment active, run:
 
-## How to Run the Tests
+```bash
+pytest
+```
 
-Install pytest, then run it from the project root:
+Use `pytest -v` to see each test by name. The tests also run automatically on every pull request through GitHub Actions.
 
-    pip install pytest
-    pytest
+## Files
 
-The tests live in the `tests/` folder. They also run automatically on
-every push through GitHub Actions (`.github/workflows/ci.yml`).
+- `board.py`: the Board class
+- `ai.py`: the AI classes (AIPlayer, EasyAI, HardAI)
+- `game.py`: turns and win or draw checks
+- `main.py`: menus, prompts, and printing
+- `tests/`: pytest tests
+- `PLAN.md`: my plan for the project

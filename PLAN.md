@@ -51,3 +51,11 @@ Minimax has to try a lot of moves. I could copy the board each time, or place a 
 **4. Where to convert the player's numbers**
 
 Players type rows and columns starting from 1, but my code uses 0. I'm doing the conversion only in `main.py`, so the Board and Game always work with 0-based positions and I avoid off-by-one bugs.
+
+## What changed
+
+- I added a `cell(row, col)` method and a `__str__` method to Board. The tests needed a way to check one cell without touching `_grid`, and `main.py` needed a way to print the board.
+- `Game.play_move` returns a short status ("ok", "invalid", "win", "draw", "over") instead of just True or False, so `main.py` knows which message to show and the game never has to print anything itself.
+- I moved the `rng` setup into the AIPlayer base class so EasyAI and HardAI don't repeat it. HardAI uses it to pick between moves that are equally good.
+- My first version of HardAI was more complicated than it needed to be, so I simplified it. It first checks if it can win right away, and otherwise scores each move as 1 for a win, -1 for a loss, or 0 for a draw. It still uses `remove_mark` to undo each test move, like I planned.
+- The "Hard never loses" test checks every possible game X can play, like I planned. It takes a few seconds, which is slower than the other tests but still fine to run every time.
